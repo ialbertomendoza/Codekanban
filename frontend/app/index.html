@@ -9,6 +9,8 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/Bootflat/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bower_components/Bootflat/bootflat/css/bootflat.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -18,18 +20,114 @@
 
   </head>
   <body>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">CodeKanban</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div id="tablero">
+        <div class="columna">
+          <div class="title">Pendiente</div>
+          <div class="cont-columna">
+            <ul class="col-estado" id="pendiente">
+              <li data-id="1"><div></div></li>
+              <li data-id="2"><div></div></li>
+              <li data-id="3"><div></div></li>
+            </ul>
+          </div>
+        </div>
+        <div class="columna">
+          <div class="title">Asignado</div>
+          <div class="cont-columna">
+            <ul class="col-estado" id="asignado">
+              <li data-id="4"><div></div></li>
+            </ul>
+          </div>
+        </div>
+        <div class="columna">
+          <div class="title">Desarrollo</div>
+          <div class="cont-columna">
+            <ul class="col-estado" id="desarrollo">
+              <li data-id="5"><div></div></li>
+            </ul>
+          </div>
+        </div>
+        <div class="columna">
+          <div class="title">Pruebas</div>
+          <div class="cont-columna">
+            <ul class="col-estado" id="pruebas"></ul>
+          </div>
+        </div>
+        <div class="columna">
+          <div class="title">Lanzamiento</div>
+          <div class="cont-columna">
+            <ul class="col-estado" id="lanzamiento">
+              <li data-id="6"><div></div></li>
+              <li data-id="7"><div></div></li>
+              <li data-id="8"><div></div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
 
 
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
+      <script src="../bower_components/jquery/dist/jquery.js"></script>
+      <script src="../bower_components/Bootflat/js/bootstrap.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
+        <script src="scripts/jquery.dragsort-0.5.2.min.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
+
+
+      <script type="text/javascript">
+
+        $("#pendiente, #asignado, #desarrollo, #pruebas, #lanzamiento").dragsort({ dragSelector: "div", dragBetween: true, dragEnd: asignaTarea, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
+
+        function asignaTarea() {
+          var id = $(this).data('id');
+          var estado = $(this).parent().attr('id');
+          $(this).find('div').removeClass('box-pendiente').removeClass('box-asignado').removeClass('box-desarrollo').removeClass('box-pruebas').removeClass('box-lanzamiento');
+          $(this).find('div').addClass('box-'+estado);
+          console.log(estado);
+          console.log(id);
+        };
+
+
+      </script>
 </body>
 </html>
