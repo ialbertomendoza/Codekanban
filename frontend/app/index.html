@@ -39,13 +39,12 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Acciones <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a id="btn-project-new" href="#">Nuevo Proyecto</a></li>
+                  <li><a id="btn-task-new" href="#">Nueva tarea</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Cerrar Sesion</a></li>
                 </ul>
               </li>
             </ul>
@@ -126,7 +125,29 @@
         </div>
       </div>
 
-    <!-- build:js scripts/vendor.js -->
+
+      <div id="modalNuevoProyecto" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Nuevo proyecto</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="input_proyecto">Nombre del proyecto</label>
+                <input type="text" class="form-control" id="input_proyecto" placeholder="ingresa el nombre del nuevo proyecto">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Nuevo proyecto</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
       <script src="../bower_components/jquery/dist/jquery.js"></script>
       <script src="../bower_components/Bootflat/js/bootstrap.min.js"></script>
@@ -144,8 +165,20 @@
         $('#pendiente, #asignado, #desarrollo, #pruebas, #lanzamiento').dragsort({ dragSelector: ".tarea", dragBetween: true, dragEnd: asignaTarea, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
 
         $('.col-estado').on('click','li div', function(){
-          $('#modalNuevaTarea').modal('show')
+
         });
+
+        $('#btn-task-new').on('click', function(){
+          $('#modalNuevaTarea').modal('show');
+          return false;
+        });
+
+        $('#btn-project-new').on('click', function(){
+          $('#modalNuevoProyecto').modal('show');
+          return false;
+        });
+
+        modalNuevoProyecto
 
         function asignaTarea() {
           var id = $(this).data('id');
