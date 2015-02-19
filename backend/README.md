@@ -1,3 +1,3 @@
-# backend
+# pruebakanban
 
 a [Sails](http://sailsjs.org) application
