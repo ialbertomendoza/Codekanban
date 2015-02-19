@@ -4,6 +4,7 @@
   "dependencies": {
     "jquery": "~2.1.1",
     "dragsort": "https://hg.codeplex.com/dragsort",
-    "Bootflat": "~2.0.4"
+    "Bootflat": "~2.0.4",
+    "handlebars": "~3.0.0"
   }
 }

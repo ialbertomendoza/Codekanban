@@ -58,9 +58,18 @@
           <div class="title">Pendiente</div>
           <div class="cont-columna">
             <ul class="col-estado" id="pendiente">
-              <li data-id="1"><div></div></li>
-              <li data-id="2"><div></div></li>
-              <li data-id="3"><div></div></li>
+              <li data-id="1">
+                <div class="tarea">
+                  <div class="titulo">Lorem ipsum dolum siadmen pullum agore.</div>
+                  <div class="tiempo"><span>44</span>Dias</div>
+                  <div class="informacion_adicional">
+                    <div class="info_extra comentarios"><span class="glyphicon glyphicon-comment"></span> 0</div>
+                    <div class="info_extra asignado"><span class="glyphicon glyphicon-user"></span> juanito escarcha</div>
+                  </div>
+                </div>
+              </li>
+              <li data-id="2"><div class="tarea"></div></li>
+              <li data-id="3"><div class="tarea"></div></li>
             </ul>
           </div>
         </div>
@@ -68,7 +77,7 @@
           <div class="title">Asignado</div>
           <div class="cont-columna">
             <ul class="col-estado" id="asignado">
-              <li data-id="4"><div></div></li>
+              <li data-id="4"><div class="tarea"></div></li>
             </ul>
           </div>
         </div>
@@ -76,7 +85,7 @@
           <div class="title">Desarrollo</div>
           <div class="cont-columna">
             <ul class="col-estado" id="desarrollo">
-              <li data-id="5"><div></div></li>
+              <li data-id="5"><div class="tarea"></div></li>
             </ul>
           </div>
         </div>
@@ -90,9 +99,9 @@
           <div class="title">Lanzamiento</div>
           <div class="cont-columna">
             <ul class="col-estado" id="lanzamiento">
-              <li data-id="6"><div></div></li>
-              <li data-id="7"><div></div></li>
-              <li data-id="8"><div></div></li>
+              <li data-id="6"><div class="tarea"></div></li>
+              <li data-id="7"><div class="tarea"></div></li>
+              <li data-id="8"><div class="tarea"></div></li>
             </ul>
           </div>
         </div>
@@ -100,6 +109,22 @@
 
 
 
+      <div class="modal fade" id="modalNuevaTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Nueva Tarea</h4>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Nueva Tarea</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -116,13 +141,17 @@
 
       <script type="text/javascript">
 
-        $("#pendiente, #asignado, #desarrollo, #pruebas, #lanzamiento").dragsort({ dragSelector: "div", dragBetween: true, dragEnd: asignaTarea, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
+        $('#pendiente, #asignado, #desarrollo, #pruebas, #lanzamiento').dragsort({ dragSelector: ".tarea", dragBetween: true, dragEnd: asignaTarea, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
+
+        $('.col-estado').on('click','li div', function(){
+          $('#modalNuevaTarea').modal('show')
+        });
 
         function asignaTarea() {
           var id = $(this).data('id');
           var estado = $(this).parent().attr('id');
-          $(this).find('div').removeClass('box-pendiente').removeClass('box-asignado').removeClass('box-desarrollo').removeClass('box-pruebas').removeClass('box-lanzamiento');
-          $(this).find('div').addClass('box-'+estado);
+          $(this).find('.tarea').removeClass('box-pendiente').removeClass('box-asignado').removeClass('box-desarrollo').removeClass('box-pruebas').removeClass('box-lanzamiento');
+          $(this).find('.tarea').addClass('box-'+estado);
           console.log(estado);
           console.log(id);
         };
