@@ -119,13 +119,88 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Nueva Tarea</h4>
+              <h4 class="modal-title" id="myModalLabel">Titulo de la tarea</h4>
             </div>
             <div class="modal-body">
-              ...
+              <div class="tarea-detalle">
+                <div class="tarea-proyecto">Pertenece al proyecto: <span>Proyecto 14</span></div>
+                <div class="tarea-descripcion">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis nunc vitae congue. Cras bibendum libero in metus sollicitudin, bibendum cursus elit interdum. Pellentesque egestas vestibulum vulputate. Cras tincidunt sit amet mauris ut lobortis. Etiam ultrices ex ac dui gravida semper. </div>
+              </div>
+              <div class="comentarios-detalle">
+                <h6>Comentarios</h6>
+                <div class="comentario-cont">
+                  <div class="comentario">
+                    <div class="comentario-info">
+                      <div class="comentario-user"><span class="glyphicon glyphicon-user"></span> Juanito.Escarcha</div>
+                      <div class="comentario-date"><span class="glyphicon glyphicon-time"></span> Hace 3 dias.</div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis nunc vitae congue.</p>
+                  </div>
+                  <div class="comentario">
+                    <div class="comentario-info">
+                      <div class="comentario-user"><span class="glyphicon glyphicon-user"></span> Juanito.Escarcha</div>
+                      <div class="comentario-date"><span class="glyphicon glyphicon-time"></span> Hace 3 dias.</div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis nunc vitae congue.</p>
+                  </div>
+                  <div class="comentario">
+                    <div class="comentario-info">
+                      <div class="comentario-user"><span class="glyphicon glyphicon-user"></span> Juanito.Escarcha</div>
+                      <div class="comentario-date"><span class="glyphicon glyphicon-time"></span> Hace 3 dias.</div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis nunc vitae congue.</p>
+                  </div>
+                  <div class="comentario">
+                    <div class="comentario-info">
+                      <div class="comentario-user"><span class="glyphicon glyphicon-user"></span> Juanito.Escarcha</div>
+                      <div class="comentario-date"><span class="glyphicon glyphicon-time"></span> Hace 3 dias.</div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis nunc vitae congue.</p>
+                  </div>
+                  <div class="comentario">
+                    <div class="comentario-info">
+                      <div class="comentario-user"><span class="glyphicon glyphicon-user"></span> Juanito.Escarcha</div>
+                      <div class="comentario-date"><span class="glyphicon glyphicon-time"></span> Hace 3 dias.</div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis nunc vitae congue.</p>
+                  </div>
+                  <div class="comentario">
+                    <div class="comentario-info">
+                      <div class="comentario-user"><span class="glyphicon glyphicon-user"></span> Juanito.Escarcha</div>
+                      <div class="comentario-date"><span class="glyphicon glyphicon-time"></span> Hace 3 dias.</div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis nunc vitae congue.</p>
+                  </div>
+                  <div class="comentario">
+                    <div class="comentario-info">
+                      <div class="comentario-user"><span class="glyphicon glyphicon-user"></span> Juanito.Escarcha</div>
+                      <div class="comentario-date"><span class="glyphicon glyphicon-time"></span> Hace 3 dias.</div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis nunc vitae congue.</p>
+                  </div>
+                  <div class="comentario">
+                    <div class="comentario-info">
+                      <div class="comentario-user"><span class="glyphicon glyphicon-user"></span> Juanito.Escarcha</div>
+                      <div class="comentario-date"><span class="glyphicon glyphicon-time"></span> Hace 3 dias.</div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis nunc vitae congue.</p>
+                  </div>
+                  <div class="comentario">
+                    <div class="comentario-info">
+                      <div class="comentario-user"><span class="glyphicon glyphicon-user"></span> Juanito.Escarcha</div>
+                      <div class="comentario-date"><span class="glyphicon glyphicon-time"></span> Hace 3 dias.</div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis nunc vitae congue.</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Nueva Tarea</button>
+              <div class="form-group">
+                <label for="comentario_tarea">Hacer un comentario</label>
+                <textarea class="form-control" id="comentario_tarea" rows="3"></textarea>
+              </div>
+              <button type="button" class="btn btn-primary">Comentar</button>
             </div>
           </div>
         </div>
@@ -206,7 +281,7 @@
         $('#pendiente, #asignado, #desarrollo, #pruebas, #lanzamiento').dragsort({ dragSelector: ".tarea", dragBetween: true, dragEnd: asignaTarea, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
 
         $('.col-estado').on('click','li div', function(){
-
+          $('#modalTarea').modal('show');
         });
 
         $('#btn-task-new').on('click', function(){
