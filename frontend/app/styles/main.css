@@ -10,6 +10,7 @@ body {
   left: 0;
   right: 0;
   background: #FFFFFF url("../images/bg.png");
+  min-width: 900px;
 }
 
 .columna{
@@ -45,7 +46,10 @@ body {
 .col-estado .tarea { display: block; width: 100%; height:60px; border:solid 1px black; text-align:left; padding:5px; position: relative; }
 .placeHolder div { display: block; width: 100%; height:60px; background-color:transparent !important; border:dashed 1px gray !important; }
 
-
+#listadoProyectos{
+  opacity: 0.5;
+  min-width: 200px;
+}
 
 /****************** Tarea**************************/
 .tarea .titulo{

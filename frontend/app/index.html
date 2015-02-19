@@ -34,7 +34,13 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <form class="navbar-form navbar-left" role="search">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <select class="form-control" id="listadoProyectos">
+                  <option>Todos</option>
+                  <option>Proyecto 1</option>
+                  <option>Proyecto 13</option>
+                  <option>Proyecto 14</option>
+                  <option>Proyecto 15</option>
+                </select>
               </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
@@ -108,7 +114,7 @@
 
 
 
-      <div class="modal fade" id="modalNuevaTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal fade" id="modalTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -146,6 +152,41 @@
         </div>
       </div>
 
+      <div id="modalNuevaTarea" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Nueva Tarea</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <div class="form-group">
+                  <label for="input_proyecto">Titulo tarea</label>
+                  <input type="text" class="form-control" id="titulo_tarea" placeholder="ingresa el titulo de la tarea">
+                </div>
+                <div class="form-group">
+                  <label for="input_proyecto">Proyecto asignado</label>
+                  <select class="form-control" id="proyecto_asignado">
+                    <option>Proyecto 1</option>
+                    <option>Proyecto 13</option>
+                    <option>Proyecto 14</option>
+                    <option>Proyecto 15</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="descripcion_tarea">Descricion de tarea</label>
+                  <textarea class="form-control" id="descripcion_tarea" rows="3"></textarea>
+                </div>
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Nueva Tarea</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
