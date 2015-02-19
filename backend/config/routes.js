@@ -34,7 +34,13 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+  'GET /proyecto':'Proyecto.listar',
+  'GET /tarea': 'Tarea.listar',
+  'GET /comentario': 'Comentario.listar',
+  'PUT /proyecto':'Proyecto.crear',
+  'PUT /tarea': 'Tarea.crear',
+  'PUT /comentario': 'Comentario.crear',
 
   /***************************************************************************
   *                                                                          *
