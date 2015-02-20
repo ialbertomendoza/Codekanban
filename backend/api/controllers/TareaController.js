@@ -15,6 +15,9 @@ module.exports = {
 		Tarea.create(req.params.all(),function tareaCreada(err, tarea){
 			if(err)
 				return next(err);
+			var socket = req.socket;
+			var io = sails.io;
+			io.sockets.emit('nuevaTarea', {"status":"true","response":tarea});
 			return res.json(201, {"status":"true","response":{"id":tarea.id}});
 		});
 	},
@@ -28,6 +31,7 @@ module.exports = {
 			if(!tareas)
 				return res.notFound();
 			var tarea = tareas[0];
+			io.sockets.emit('actualizadaTarea', {"status":"true","response":tarea});
 			return res.json(200, {"status":"true","response":{"id":tarea.id}});
 		});
 	},

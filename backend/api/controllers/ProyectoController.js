@@ -10,13 +10,16 @@ module.exports = {
 		actions: false,
 	    shortcuts: false,
 	    rest: true
-	},	
+	},
 	crear: function(req, res, next){
 		Proyecto.create(req.params.all(),function proyectoCreado(err, proyecto){
 			if(err){
 				console.log('entro al error');
 				return next(err);
 			}
+			var socket = req.socket;
+			var io = sails.io;
+			io.sockets.emit('nuevoProyecto', {"status":"true","response":proyecto});
 			return res.json(201, {"status":"true","response":{"id":proyecto.id}});
 		});
 	},
@@ -30,6 +33,9 @@ module.exports = {
 			if(!proyectos)
 				return res.notFound();
 			var proyecto = proyectos[0];
+			var socket = req.socket;
+			var io = sails.io;
+			io.sockets.emit('actualizadoProyecto', {"status":"true","response":proyecto});
 			return res.json(200, {"status":"true","response":{"id":proyecto.id}});
 		});
 	},
@@ -40,6 +46,4 @@ module.exports = {
 			return res.json(proyectos);
 		});
 	}
-
 };
-

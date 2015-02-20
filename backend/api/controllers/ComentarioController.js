@@ -15,6 +15,9 @@ module.exports = {
 		Comentario.create(req.params.all(),function comentarioCreado(err, comentario){
 			if(err)
 				return next(err);
+			var socket = req.socket;
+			var io = sails.io;
+			io.sockets.emit('nuevoComentario', {"status":"true","response":comentario});
 			return res.json(201, {"status":"true","response":{"id":comentario.id}});
 		});
 	},
@@ -28,6 +31,9 @@ module.exports = {
 			if(!comentarios)
 				return res.notFound();
 			var comentario = comentarios[0];
+			var socket = req.socket;
+			var io = sails.io;
+			io.sockets.emit('actualizadoComentario', {"status":"true","response":comentario});
 			return res.json(200, {"status":"true","response":{"id":comentario.id}});
 		});
 	},
