@@ -18,7 +18,8 @@ module.exports = {
  				return next(err);
  			req.session.authenticated = true;
  			req.session.user = user;
- 			if (req.wantsJSON) return res.json(201, user); 			
+ 			if (req.wantsJSON) 
+ 				return res.json(201, user); 			
  			else 				 
  				return res.redirect('/user/' + user.id); 			
  		});

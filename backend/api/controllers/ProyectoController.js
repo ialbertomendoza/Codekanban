@@ -17,7 +17,7 @@ module.exports = {
 				console.log('entro al error');
 				return next(err);
 			}
-			return res.redirect('/proyecto/'+proyecto.id);
+			return res.json(201, {"status":"true","response":{"id":proyecto.id}});
 		});
 	},
 	actualizar:function(req, res, next){
