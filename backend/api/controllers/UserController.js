@@ -18,22 +18,18 @@ module.exports = {
  				return next(err);
  			req.session.authenticated = true;
  			req.session.user = user;
- 			if (req.wantsJSON) 
- 				return res.json(201, user); 			
- 			else 				 
- 				return res.redirect('/user/' + user.id); 			
+ 			return res.json(201, {"status":"true","response":{"id":user.id}});
  		});
  	},
  	eliminar: function(req, res, next) {
  		var id = req.param('id'); 		
  		if( !id ) return res.notFound(); 		
- 		User.findOne(id).done(function foundUser(err, user){
+ 		User.findOne(id).exec(function foundUser(err, user){
  			if ( err ) return next(err); 			
  			if ( !user ) return res.notFound(); 			
- 			User.destroy(user.id).done(function userDestroyed(err){
+ 			User.destroy(user.id).exec(function userDestroyed(err){
  				if ( err ) return next(); 				
- 				if (req.wantsJSON) return res.json(200); 				
- 				else return res.redirect('/user');
+ 				return res.json(200, {"status":"true"});
  			})
  		});
  	},

@@ -15,7 +15,7 @@ module.exports = {
 		Comentario.create(req.params.all(),function comentarioCreado(err, comentario){
 			if(err)
 				return next(err);
-			return res.redirect('/comentario/'+comentario.id);
+			return res.json(201, {"status":"true","response":{"id":comentario.id}});
 		});
 	},
 	actualizar:function(req, res, next){
@@ -28,7 +28,7 @@ module.exports = {
 			if(!comentarios)
 				return res.notFound();
 			var comentario = comentarios[0];
-			return res.redirect('/comentario/'+comentario.id);
+			return res.json(200, {"status":"true","response":{"id":comentario.id}});
 		});
 	},
 	listar:function(req, res, next){

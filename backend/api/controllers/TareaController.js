@@ -15,7 +15,7 @@ module.exports = {
 		Tarea.create(req.params.all(),function tareaCreada(err, tarea){
 			if(err)
 				return next(err);
-			return res.redirect('/tarea/'+tarea.id);
+			return res.json(201, {"status":"true","response":{"id":tarea.id}});
 		});
 	},
 	actualizar:function(req, res, next){
@@ -28,7 +28,7 @@ module.exports = {
 			if(!tareas)
 				return res.notFound();
 			var tarea = tareas[0];
-			return res.redirect('/tarea/'+tarea.id);
+			return res.json(200, {"status":"true","response":{"id":tarea.id}});
 		});
 	},
 	listar:function(req, res, next){

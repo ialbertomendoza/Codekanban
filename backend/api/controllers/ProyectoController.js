@@ -30,7 +30,7 @@ module.exports = {
 			if(!proyectos)
 				return res.notFound();
 			var proyecto = proyectos[0];
-			return res.redirect('/proyecto/'+proyecto.id);
+			return res.json(200, {"status":"true","response":{"id":proyecto.id}});
 		});
 	},
 	listar:function(req, res, next){
