@@ -34,12 +34,28 @@ module.exports.routes = {
   '/':{
     view:'homepage'
   },
-  'GET /proyecto':'Proyecto.listar',
-  'GET /tarea': 'Tarea.listar',
-  'GET /comentario': 'Comentario.listar',
+  'GET /proyecto':{
+      controller:'Proyecto',
+      action:'listar',
+      cors:true
+  },
+  'GET /tarea':{
+    controller:'Tarea',
+    action:'listar',
+    cors:true
+  },
+  'GET /comentario':{
+    controller:'Comentario',
+    action:'listar',
+    cors:true
+  },
   'GET /user': 'User.listar',
   'GET /user/logout':'User.logout',
-  'PUT /proyecto':'Proyecto.crear',
+  'PUT /proyecto':{
+    controller:'Proyecto',
+    action:'crear',
+    cors:true
+  },
   'PUT /tarea': 'Tarea.crear',
   'PUT /comentario': 'Comentario.crear',
   'PUT /user':'User.crear',

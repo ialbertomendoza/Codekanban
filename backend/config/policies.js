@@ -1,6 +1,6 @@
 module.exports.policies = {
-	'*': true,
-	ProyectoController:{
+	'*': true//,
+	/*ProyectoController:{
 		'*':'isAuthenticated'
 	},
 	TareaController:{
@@ -8,5 +8,5 @@ module.exports.policies = {
 	},
 	ComentarioController:{
 		'*':'isAuthenticated'
-	}
+	}*/
 }
