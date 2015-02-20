@@ -11,8 +11,7 @@
  */
 
 module.exports.sockets = {
-
-
+  
   /***************************************************************************
   *                                                                          *
   * Node.js (and consequently Sails.js) apps scale horizontally. It's a      *

@@ -10,8 +10,7 @@ module.exports = {
 		actions: false,
 	    shortcuts: false,
 	    rest: true
-	},
-	
+	},	
 	crear: function(req, res, next){
 		Proyecto.create(req.params.all(),function proyectoCreado(err, proyecto){
 			if(err){

@@ -19,7 +19,7 @@ module.exports = {
 		});
 	},
 	actualizar:function(req, res, next){
-		var id = req.param('id');
+		var id = req.param('id');		
 		if(!id)
 			return res.notFound();
 		Tarea.update(id, req.params.all()).exec(function tareaActualizada(err, tareas){

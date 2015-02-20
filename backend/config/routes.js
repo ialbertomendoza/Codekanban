@@ -31,16 +31,21 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
-  '/': {
-    view: 'homepage'
+  '/':{
+    view:'homepage'
   },
   'GET /proyecto':'Proyecto.listar',
   'GET /tarea': 'Tarea.listar',
   'GET /comentario': 'Comentario.listar',
+  'GET /user': 'User.listar',
+  'GET /user/logout':'User.logout',
   'PUT /proyecto':'Proyecto.crear',
   'PUT /tarea': 'Tarea.crear',
   'PUT /comentario': 'Comentario.crear',
+  'PUT /user':'User.crear',
+  'POST /user/login':'User.login',
+  'POST /tarea/update':'Tarea.actualizar',
+  'POST /proyecto/update':'Proyecto.actualizar'  
 
   /***************************************************************************
   *                                                                          *
