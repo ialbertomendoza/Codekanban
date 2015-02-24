@@ -33,6 +33,7 @@ module.exports = {
 		},
 		status:{
 			type:'boolean',
+			defaultsTo: true,
 			required:true
 		},
 		total_comentario:{
