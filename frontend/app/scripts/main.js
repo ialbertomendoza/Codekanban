@@ -24,6 +24,11 @@ function peticionApi(metodo,url,parametros) {
   return $.ajax(opcionesAjax);
 }
 
+function inputClear(){
+  $('.input-clear').val('');
+  $('.modal').modal('hide');
+}
+
 
 $('#pendiente, #asignado, #desarrollo, #pruebas, #lanzamiento').dragsort({ dragSelector: '.tarea', dragBetween: true, dragEnd: asignaTarea, placeHolderTemplate: '<li class="placeHolder"><div></div></li>' });
 

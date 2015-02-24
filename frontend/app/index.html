@@ -288,6 +288,15 @@
         $('#btn-nuevo-proyecto').on('click', function(){
           var nombreProyecto = $('#input_proyecto').val();
           var dataProyecto = 'nombre='+nombreProyecto+'&status=true&usuario=testing';
+          peticionApi('PUT',myApp.url.rest+'proyecto',dataProyecto)
+            .done(function(dato){
+              inputClear();
+              console.log(dato);
+              console.log("Datos insertados");
+            })
+            .fail(function(){
+              console.log("Coño algo ha pasado aqui joder");
+            });
         });
       </script>
 </body>
