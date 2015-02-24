@@ -49,19 +49,51 @@ module.exports.routes = {
     action:'listar',
     cors:true
   },
-  'GET /user': 'User.listar',
-  'GET /user/logout':'User.logout',
+  'GET /user':{
+    controller:'User',
+    action:'listar',
+    cors:true
+  },
+  'GET /user/logout':{
+    controller:'User',
+    action:'logout',
+    cors:true
+  },
   'PUT /proyecto':{
     controller:'Proyecto',
     action:'crear',
     cors:true
   },
-  'PUT /tarea': 'Tarea.crear',
-  'PUT /comentario': 'Comentario.crear',
-  'PUT /user':'User.crear',
-  'POST /user/login':'User.login',
-  'POST /tarea/update':'Tarea.actualizar',
-  'POST /proyecto/update':'Proyecto.actualizar'  
+  'PUT /tarea':{
+    controller:'Tarea',
+    action:'crear',
+    cors:true
+  },
+  'PUT /comentario':{
+    controller:'Comentario',
+    action:'crear',
+    cors:true
+  },
+  'PUT /user':{
+    controller:'User',
+    action:'crear',
+    cors:true
+  }, 
+  'POST /user/login':{
+    controller:'User',
+    action:'login',
+    cors:true
+  },
+  'POST /tarea/update':{
+    controller:'Tarea',
+    action:'actualizar',
+    cors:true
+  }, 
+  'POST /proyecto':{
+    controller:'Proyecto',
+    action:'actualizar',
+    cors:true
+  }  
 
   /***************************************************************************
   *                                                                          *
