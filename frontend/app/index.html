@@ -34,7 +34,7 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <form class="navbar-form navbar-left" role="search">
               <div class="form-group">
-                <select class="form-control" id="listadoProyectos">
+                <select class="form-control select-proyecto" id="listadoProyectos">
                   <option>Todos</option>
                   <option>Proyecto 1</option>
                   <option>Proyecto 13</option>
@@ -235,29 +235,29 @@
               <h4 class="modal-title">Nueva Tarea</h4>
             </div>
             <div class="modal-body">
-              <div class="form-group">
+              <form id="form-nueva-tarea">
                 <div class="form-group">
                   <label for="input_proyecto">Titulo tarea</label>
-                  <input type="text" class="input-clear form-control" id="titulo_tarea" placeholder="ingresa el titulo de la tarea">
+                  <input type="text" class="input-clear form-control" name="titulo" id="titulo_tarea" placeholder="ingresa el titulo de la tarea">
                 </div>
                 <div class="form-group">
                   <label for="input_proyecto">Proyecto asignado</label>
-                  <select class="form-control" id="proyecto_asignado">
+                  <select name="proyecto" class="form-control select-proyecto" id="proyecto_asignado">
                     <option>Proyecto 1</option>
                     <option>Proyecto 13</option>
                     <option>Proyecto 14</option>
                     <option>Proyecto 15</option>
                   </select>
                 </div>
+                <input type="hidden" name="estado" value="pendiente">
                 <div class="form-group">
                   <label for="descripcion_tarea">Descricion de tarea</label>
-                  <textarea class="input-clear form-control" id="descripcion_tarea" rows="3"></textarea>
+                  <textarea class="input-clear form-control" name="descripcion" id="descripcion_tarea" rows="3"></textarea>
                 </div>
-
-              </div>
+              </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Nueva Tarea</button>
+              <button type="button" id="btn-nueva-tarea" class="btn btn-primary">Nueva Tarea</button>
             </div>
           </div>
         </div>
@@ -279,24 +279,21 @@
         };
       </script>
 
+        <script src="http://localhost:1337/js/depencencies/sails.io.js"></script>
         <!-- build:js scripts/main.js -->
         <script src="scripts/jquery.dragsort-0.5.2.min.js"></script>
+        <script src="scripts/proto.js"></script>
+        <script src="scripts/sockets.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 
       <script type="text/javascript">
         $('#btn-nuevo-proyecto').on('click', function(){
-          var nombreProyecto = $('#input_proyecto').val();
-          var dataProyecto = 'nombre='+nombreProyecto+'&status=true&usuario=testing';
-          peticionApi('PUT',myApp.url.rest+'proyecto',dataProyecto)
-            .done(function(dato){
-              inputClear();
-              console.log(dato);
-              console.log("Datos insertados");
-            })
-            .fail(function(){
-              console.log("Coño algo ha pasado aqui joder");
-            });
+         proyecto.query.new('nombre='+$('#input_proyecto').val()+'&status=true&usuario=testing');
+        });
+
+        $('#btn-nueva-tarea').on('click', function(){
+          tarea.query.new($('#form-nueva-tarea').serialize());
         });
       </script>
 </body>
