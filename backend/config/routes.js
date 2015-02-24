@@ -63,14 +63,14 @@ module.exports.routes = {
     controller:'Proyecto',
     action:'crear',
     cors:true
-  },
-  'PUT /tarea':{
-    controller:'Tarea',
+  },  
+  'PUT /comentario':{
+    controller:'Comentario',
     action:'crear',
     cors:true
   },
-  'PUT /comentario':{
-    controller:'Comentario',
+  'PUT /tarea':{
+    controller:'Tarea',
     action:'crear',
     cors:true
   },
