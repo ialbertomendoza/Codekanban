@@ -17,9 +17,7 @@ module.exports = {
 				console.log('entro al error');
 				return next(err);
 			}
-			var socket = req.socket;
-			var io = sails.io;
-			io.sockets.emit('nuevoProyecto', {"status":"true","response":proyecto});
+			Proyecto.publishCreate({"status":"true","response":proyecto});
 			return res.json(201, {"status":"true","response":{"id":proyecto.id}});
 		});
 	},
