@@ -4,7 +4,7 @@ var proyecto = {
       peticionApi('PUT',myApp.url.rest+'proyecto',data)
         .done(function(dato){
           inputClear();
-          console.log(dato);
+          //console.log(dato);
           console.log('Datos insertados');
         })
         .fail(function(){

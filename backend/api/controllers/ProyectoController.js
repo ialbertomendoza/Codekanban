@@ -6,20 +6,19 @@
  */
 
 module.exports = {
-	_config: {
-		actions: false,
-	    shortcuts: false,
-	    rest: true
-	},
+    _config: {
+        actions: false,
+        shortcuts: false,
+        rest: true
+    },
 	crear: function(req, res, next){
 		Proyecto.create(req.params.all(),function proyectoCreado(err, proyecto){
 			if(err){
 				console.log('entro al error');
 				return next(err);
 			}
-			var socket = req.socket;
-			var io = sails.io;
-			io.sockets.emit('nuevoProyecto', {"status":"true","response":proyecto});
+            console.log(Proyecto);
+            Proyecto.publishCreate(proyecto);
 			return res.json(201, {"status":"true","response":{"id":proyecto.id}});
 		});
 	},
@@ -40,7 +39,13 @@ module.exports = {
 		});
 	},
 	listar:function(req, res, next){
-		Proyecto.find().exec(function proyectosEncontrados(err,proyectos){
+        if (req.isSocket) {
+            Proyecto.watch(req);
+            console.log('Proyecto with socket id ' + sails.sockets.id(req) + ' is now subscribed to the model class \'Proyecto\'.');
+        }
+
+
+        Proyecto.find().exec(function proyectosEncontrados(err,proyectos){
 			if(err)
 				return next(err);
 			return res.json(proyectos);

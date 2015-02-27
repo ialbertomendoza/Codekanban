@@ -279,7 +279,7 @@
         };
       </script>
 
-        <script src="http://localhost:1337/js/depencencies/sails.io.js"></script>
+        <script src="http://localhost:1337/js/dependencies/sails.io.js"></script>
         <!-- build:js scripts/main.js -->
         <script src="scripts/jquery.dragsort-0.5.2.min.js"></script>
         <script src="scripts/proto.js"></script>
@@ -287,7 +287,28 @@
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 
+
       <script type="text/javascript">
+        io.sails.url = "http://localhost:1337/";
+
+
+
+
+        io.socket.get("/proyecto",function(data){
+          console.log(data);
+        });
+
+        console.log(io.socket);
+
+
+        io.socket.on("proyecto", function renderEvento(data){
+          console.log(data);
+        });
+
+
+
+
+
         $('#btn-nuevo-proyecto').on('click', function(){
          proyecto.query.new('nombre='+$('#input_proyecto').val()+'&status=true&usuario=testing');
         });
