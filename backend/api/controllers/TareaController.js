@@ -6,18 +6,12 @@
  */
 
 module.exports = {
-	_config: {
-		actions: false,
-	    shortcuts: false,
-	    rest: true
-	},
 	crear: function(req, res, next){
 		Tarea.create(req.params.all(),function tareaCreada(err, tarea){
-			if(err)
-				return next(err);
-			var socket = req.socket;
-			var io = sails.io;
-			io.sockets.emit('nuevaTarea', {"status":"true","response":tarea});
+			if(err){
+                return next(err);
+            }
+            Tarea.publishCreate(tarea);
 			return res.json(201, {"status":"true","response":{"id":tarea.id}});
 		});
 	},
@@ -36,6 +30,12 @@ module.exports = {
 		});
 	},
 	listar:function(req, res, next){
+
+        if (req.isSocket) {
+            Tarea.watch(req);
+            console.log('Tarea with socket id ' + sails.sockets.id(req) + ' is now subscribed to the model class \'Tarea\'.');
+        }
+        
 		Tarea.find().exec(function tareasEncontradas(err,tareas){
 			if(err)
 				return next(err);

@@ -4,8 +4,7 @@ var proyecto = {
       peticionApi('PUT',myApp.url.rest+'proyecto',data)
         .done(function(dato){
           inputClear();
-          //console.log(dato);
-          console.log('Datos insertados');
+          console.log('Proyecto insertado');
         })
         .fail(function(){
           console.log('Ha ocurrio un error');
@@ -36,8 +35,7 @@ var tarea = {
       peticionApi('PUT',myApp.url.rest+'tarea',data)
         .done(function(dato){
           inputClear();
-          console.log(dato);
-          console.log('Datos insertados');
+          console.log('Tarea insertada');
         })
         .fail(function(){
           console.log('Ha ocurrio un error');

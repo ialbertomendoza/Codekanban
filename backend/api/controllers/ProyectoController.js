@@ -17,7 +17,6 @@ module.exports = {
 				console.log('entro al error');
 				return next(err);
 			}
-            console.log(Proyecto);
             Proyecto.publishCreate(proyecto);
 			return res.json(201, {"status":"true","response":{"id":proyecto.id}});
 		});
